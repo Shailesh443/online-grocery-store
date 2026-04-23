@@ -11,7 +11,9 @@ axios.defaults.withCredentials = true;
 
 const envUrl = import.meta.env.VITE_BACKEND_URL;
 
-axios.defaults.baseURL = envUrl ? envUrl.replace(/['"]/g, "").trim().replace(/\/+$/, "") : "";
+axios.defaults.baseURL = envUrl 
+  ? envUrl.replace(/['"]/g, "").trim().replace(/\/+$/, "").replace(/\/api$/, "") 
+  : "";
 
 export const AppProvider = ({ children }) => {
   const navigate = useNavigate();

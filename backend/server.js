@@ -61,6 +61,7 @@ const startServer = async () => {
 
                     const isAllowed =
                         allowedOrigins.includes(normalizedOrigin) ||
+                        normalizedOrigin.endsWith(".vercel.app") ||
                         /^http:\/\/127\.0\.0\.1:\d+$/.test(normalizedOrigin) ||
                         /^http:\/\/localhost:\d+$/.test(normalizedOrigin);
 
