@@ -36,11 +36,7 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-
-  // user 
-
-
-
+  // ---------------- USER AUTH ----------------
   const fetchUser = async () => {
   try {
     const { data } = await axios.get("/api/user/is-auth");
@@ -147,9 +143,8 @@ export const AppProvider = ({ children }) => {
 
     loadData();
   }, []);
-  //updatedatabascaditem
 
- useEffect(() => {
+  useEffect(() => {
   const updateCart = async () => {
     try {
       const { data } = await axios.post("/api/cart/update", { cartItems });

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
-import ProductCard from "../componants/ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useAppContext } from "../context/useAppContext";
      
 
