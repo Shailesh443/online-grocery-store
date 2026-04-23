@@ -3,5 +3,10 @@ node_modules/
 .env.*
 .DS_Store
 dist/
+build/
+*.log
+
+# Project specific
 backend/.env
 frontend/.env
+frontend/dist/

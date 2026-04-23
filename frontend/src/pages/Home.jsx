@@ -1,8 +1,8 @@
-import MainBanner from "../componants/MainBanner";
-import Categories from "../componants/Categories";
-import BestSeller from "../componants/BestSeller";
-import BottomBanner from "../componants/BottomBanner";
-import NewsLetter from "../componants/NewsLetter";
+import MainBanner from "../components/MainBanner";
+import Categories from "../components/Categories";
+import BestSeller from "../components/BestSeller";
+import BottomBanner from "../components/BottomBanner";
+import NewsLetter from "../components/NewsLetter";
 
 const Home = () => {
   return (

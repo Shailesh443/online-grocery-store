@@ -1,4 +1,4 @@
- import User from "../modules/User.js";  
+ import User from "../models/User.js";  
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -42,6 +42,7 @@ export const register = async (req, res) => {
       user: {
         email: user.email,
         name: user.name,
+        cartItems: user.cartItems
       },
     });
   } catch (error) {
@@ -89,6 +90,7 @@ export const login = async (req, res) => {
       user: {
         email: user.email,
         name: user.name,
+        cartItems: user.cartItems
       },
     });
   } catch (error) {

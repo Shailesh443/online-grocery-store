@@ -1,10 +1,10 @@
  import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import Navbar from "./componants/Navbar";
-import Footer from "./componants/Footer";
-import Login from "./componants/Login";
-import SellerLogin from "./componants/Seller/SellerLogin";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
+import SellerLogin from "./components/Seller/SellerLogin";
 
 import Home from "./pages/Home";
 import AllProducts from "./pages/AllProducts";

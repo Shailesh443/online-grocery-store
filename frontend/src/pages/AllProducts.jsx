@@ -1,5 +1,5 @@
  import { useMemo } from "react";
-import ProductCard from "../componants/ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useAppContext } from "../context/useAppContext";
 import { assets } from "../assets/assets";
 

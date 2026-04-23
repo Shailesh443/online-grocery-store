@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { categories } from "../assets/assets";
-import ProductCard from "../componants/ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useAppContext } from "../context/useAppContext";
 
 const ProductCategory = () => {

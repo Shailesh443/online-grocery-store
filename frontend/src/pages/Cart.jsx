@@ -113,7 +113,7 @@ const Cart = () => {
             <div className="flex items-center gap-4">
               <img
                 onClick={() => {
-                  navigate(`/products/${encodeURIComponent(product.category)}/${product._id}`);
+                  navigate(`/product/${product._id}`);
                   window.scrollTo(0, 0);
                 }}
                 src={product.image?.[0]}
