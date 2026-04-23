@@ -45,7 +45,9 @@ const startServer = async () => {
             "http://localhost:5173",
             "http://localhost:5174",
             process.env.FRONTEND_URL
-        ].filter(Boolean);
+        ]
+        .filter(Boolean)
+        .map(origin => origin.replace(/\/+$/, "").toLowerCase());
 
         app.use(express.json());
         app.use(cookieParser());
@@ -55,12 +57,15 @@ const startServer = async () => {
                 origin: function (origin, callback) {
                     if (!origin) return callback(null, true);
 
+                    const normalizedOrigin = origin.replace(/\/+$/, "").toLowerCase();
+
                     const isAllowed =
-                        allowedOrigins.includes(origin) ||
-                        /^http:\/\/127\.0\.0\.1:\d+$/.test(origin) ||
-                        /^http:\/\/localhost:\d+$/.test(origin);
+                        allowedOrigins.includes(normalizedOrigin) ||
+                        /^http:\/\/127\.0\.0\.1:\d+$/.test(normalizedOrigin) ||
+                        /^http:\/\/localhost:\d+$/.test(normalizedOrigin);
 
                     if (!isAllowed) {
+                        console.error(`CORS blocked for origin: ${origin}`);
                         return callback(new Error("CORS error"), false);
                     }
 
