@@ -4,7 +4,7 @@ import { useAppContext } from "../../context/useAppContext";
 import toast from "react-hot-toast";
 
 const SellerLayout = () => {
-  const { axios } = useAppContext();
+  const { axios, setSellerToken, setIsSeller } = useAppContext();
   const navigate = useNavigate();
 
   const logout = async () => {
@@ -13,12 +13,14 @@ const SellerLayout = () => {
 
       if (data.success) {
         toast.success(data.message);
-        navigate('/');
-      } else {
-        toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setIsSeller(false);
+      setSellerToken(null);
+      localStorage.removeItem('sellerToken');
+      navigate('/');
     }
   };
 

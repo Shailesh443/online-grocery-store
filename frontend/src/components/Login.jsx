@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { setShowUserLogin, setUser, navigate } = useAppContext();
+  const { setShowUserLogin, setUser, navigate, setToken } = useAppContext();
 
   const [state, setState] = useState("login");
   const [name, setName] = useState("");
@@ -25,6 +25,8 @@ const Login = () => {
       );
 
       if (data.success) {
+        setToken(data.token);
+        localStorage.setItem("token", data.token);
         setUser(data.user);
         setShowUserLogin(false);
         navigate("/");
