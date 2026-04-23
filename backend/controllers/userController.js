@@ -39,6 +39,7 @@ export const register = async (req, res) => {
 
     return res.json({
       success: true,
+      token,
       user: {
         email: user.email,
         name: user.name,
@@ -87,6 +88,7 @@ export const login = async (req, res) => {
 
     return res.json({
       success: true,
+      token,
       user: {
         email: user.email,
         name: user.name,

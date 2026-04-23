@@ -6,12 +6,12 @@ import toast from 'react-hot-toast';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const { user, setUser, setShowUserLogin, setSearchQuery, searchQuery, getCartCount, axios } = useAppContext();
+  const { user, setUser, setShowUserLogin, setSearchQuery, searchQuery, getCartCount, axios, setToken } = useAppContext();
   const navigate = useNavigate();
 
   const logout = async () => {
     try {
-      const { data } = await axios.get('/api/user/logout', { withCredentials: true });
+      const { data } = await axios.get('/api/user/logout');
       if (data.success) {
         toast.success(data.message);
       }
@@ -21,6 +21,8 @@ function Navbar() {
       }
     } finally {
       setUser(null);
+      setToken(null);
+      localStorage.removeItem('token');
       navigate('/');
     }
   };

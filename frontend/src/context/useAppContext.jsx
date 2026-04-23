@@ -15,11 +15,27 @@ axios.defaults.baseURL = envUrl
   ? envUrl.replace(/['"]/g, "").trim().replace(/\/+$/, "").replace(/\/api$/, "") 
   : "";
 
+// Request Interceptor to add Bearer Token
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  const sellerToken = localStorage.getItem("sellerToken");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  } else if (sellerToken) {
+    config.headers.Authorization = `Bearer ${sellerToken}`;
+  }
+  
+  return config;
+});
+
 export const AppProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const currency = import.meta.env.VITE_CURRENCY?.trim() || "$";
 
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [sellerToken, setSellerToken] = useState(localStorage.getItem("sellerToken") || null);
   const [user, setUser] = useState(null);
   const [isSeller, setIsSeller] = useState(false);
   const [showUserLogin, setShowUserLogin] = useState(false);
@@ -189,6 +205,8 @@ export const AppProvider = ({ children }) => {
     getCartCount,
 
     axios,
+    token, setToken,
+    sellerToken, setSellerToken,
     fetchProducts, setCartItems
   };
 
